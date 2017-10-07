@@ -33,6 +33,7 @@ def fetch(args):
             with open('{}.yml'.format(item['id']), 'w') as f:
                 f.write('id: {}\n'.format(item['id']))
                 f.write('name: {}\n'.format(item['name'].encode('utf-8')))
+                f.write('profile: {}.tsv\n'.format(item['id']))
         else:
             print 'Fetch cancelled'
 
@@ -72,7 +73,7 @@ def modify(args):
     if confirm('Do you want to see the differential expression profile?'):
         print '| {:^22} | {:^7} | {:^7} |'.format('gene name', 'before', 'after')
 
-        with open('E-GEOD-58387-query-results.tpms.tsv') as f:
+        with open('sample.tsv') as f:
             for line in f:
                 F = line.rstrip().split('\t')
 
